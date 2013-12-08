@@ -4,7 +4,6 @@
 package net.nyvaria.openfly.flier;
 
 import org.bukkit.entity.Player;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
 
