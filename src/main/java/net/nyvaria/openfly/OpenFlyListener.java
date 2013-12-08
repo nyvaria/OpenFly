@@ -6,7 +6,6 @@ package net.nyvaria.openfly;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-//import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 
@@ -25,11 +24,6 @@ public class OpenFlyListener implements Listener {
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		this.plugin.flierList.put(event.getPlayer());
 	}
-	
-//	@EventHandler
-//	public void onPlayerLoginEvent(PlayerLoginEvent event) {
-//		this.plugin.flierList.put(event.getPlayer());
-//	}
 	
 	@EventHandler
 	public void onPlayerQuit(PlayerQuitEvent event) {
