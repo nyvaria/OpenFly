@@ -11,23 +11,40 @@
 	<url>https://github.com/nyvaria/OpenFly</url>
 	<description>A fly plugin for Bukkit.</description>
 	<inceptionYear>2013</inceptionYear>
-
+	
 	<issueManagement>
 		<system>GitHub</system>
 		<url>https://github.com/nyvaria/OpenFly/issues</url>
 	</issueManagement>
-
+	
+	<developers>
+		<developer>
+			<id>captbunzo</id>
+			<name>captbunzo</name>
+			<email>captbunzo@gmail.com</email>
+			<url>https://github.com/captbunzo/</url>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+	</developers>
+	
+	<organization>
+		<name>Nyvaria</name>
+		<url>http://www.nyvaria.net</url>
+	</organization>
+	
 	<scm>
 		<url>https://github.com/nyvaria/OpenFly</url>
 		<connection>scm:git:git://github.com/nyvaria/OpenFly.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com/nyvaria/OpenFly.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
-
+	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-
+	
 	<repositories>
 		<repository>
 			<id>bukkit-repo</id>
@@ -38,7 +55,7 @@
 			<url>http://ci.herocraftonline.com/plugin/repository/everything</url>
 		</repository>
 	</repositories>
-
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.bukkit</groupId>
@@ -47,15 +64,14 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
-
-
+	
 	<build>
 		<finalName>${project.artifactId}-${project.version}</finalName>
 		<defaultGoal>install</defaultGoal>
 		<directory>${basedir}/target</directory>
 		<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
 		<outputDirectory>${basedir}/target/classes</outputDirectory>
-
+		
 		<resources>
 			<resource>
 				<targetPath>.</targetPath>
@@ -65,7 +81,7 @@
 					<include>plugin.yml</include>
 				</includes>
 			</resource>
-
+			
 			<resource>
 				<targetPath>.</targetPath>
 				<filtering>false</filtering>
@@ -75,7 +91,7 @@
 				</includes>
 			</resource>
 		</resources>
-
+		
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -95,17 +111,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<developers>
-		<developer>
-			<id>captbunzo</id>
-			<name>captbunzo</name>
-			<email>captbunzo@gmail.com</email>
-			<url>https://github.com/captbunzo/</url>
-			<roles>
-				<role>developer</role>
-			</roles>
-		</developer>
-	</developers>
 
 </project>
