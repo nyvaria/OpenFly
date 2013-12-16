@@ -1,17 +1,21 @@
 name: ${pom.name}
 version: ${pom.version}
-author: captbunzo
-main: net.nyvaria.openfly.OpenFly
 website: ${pom.url}
+author: captbunzo
+
+main: net.nyvaria.openfly.OpenFly
 softdepend: [Vault]
+
 commands:
   fly:
     description: Access to the fly commands
     usage: /<fly> help [page] - Displays the OpenFly commands
+
 permissions:
   openfly.all:
     description: Gives access to all OpenFly commands
     children:
       openfly.fly: true
+  
   openfly.fly:
     description: Gives access to the fly command

@@ -48,7 +48,7 @@ public class FlyCommand implements CommandExecutor {
 			flier.setAllowFlight(true);
 		}
 		
-		// Return this command as process
+		// Return this command as processed
 		return true;
 	}
 

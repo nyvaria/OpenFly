@@ -5,6 +5,7 @@ package net.nyvaria.openfly;
 
 import java.util.HashSet;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 
@@ -57,4 +58,23 @@ public class LocationUtil {
 	static public boolean isBlockAboveAir(World world, int x, int y, int z)     {
 		return HOLLOW_MATERIALS.contains(world.getBlockAt(x, y - 1, z).getType());
 	}
+	
+	static public boolean isInMidAir(Location location) {
+		World world = location.getWorld();
+		
+		int x = location.getBlockX();
+		int y = (int) Math.round(location.getY());
+		int z = location.getBlockZ();
+		
+		while (LocationUtil.isBlockAboveAir(world, x, y, z) && (y > -1)) {
+			--y;
+		}
+		
+		if ( ((location.getBlockY() - y) > 1) || (y < 0) ) {
+			return true;
+		}
+		
+		return false;
+	}
+
 }

@@ -10,7 +10,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 
 /**
- * @author Paul
+ * @author Paul Thompson
  *
  */
 public class OpenFlyListener implements Listener {

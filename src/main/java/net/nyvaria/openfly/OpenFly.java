@@ -67,11 +67,11 @@ public class OpenFly extends JavaPlugin {
 		return "v" + this.getDescription().getVersion();
 	}
 	
-	private void log(String msg) {
+	public void log(String msg) {
 		this.log(Level.INFO, msg);
 	}
 	
-	private void log(Level level, String msg) {
+	public void log(Level level, String msg) {
 		this.getLogger().log(level, msg);
 	}
 }
