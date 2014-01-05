@@ -17,6 +17,8 @@ import org.bukkit.entity.Player;
  *
  */
 public class FlyCommand implements CommandExecutor {
+	public static String CMD = "fly";
+	
 	private final OpenFly plugin;
 	
 	public FlyCommand(OpenFly plugin) {
@@ -26,8 +28,8 @@ public class FlyCommand implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		// Make sure we have a Player
 		if ( !(sender instanceof Player) ) {
-			sender.sendMessage("You must be a player to use /fly");
-			return false;
+			sender.sendMessage("You must be a player to use /" + FlyCommand.CMD);
+			return true;
 		}
 		
 		// Attempt to get the flier
@@ -35,19 +37,25 @@ public class FlyCommand implements CommandExecutor {
 		
 		// Make sure our Player is online
 		if (flier == null) {
-			sender.sendMessage("You must be online to use /fly");
-			return false;
+			sender.sendMessage("You must be online to use /" + FlyCommand.CMD);
+			return true;
 		}
 		
-		// For now, no permission checks. Just toggle fly.
-		if (flier.getAllowFlight()) {
+		// Check if this player is not allowed to fly
+		if (!flier.hasFlyPermission()) {
+			sender.sendMessage(ChatColor.YELLOW + "Sorry, but you are not allowed to use /" + FlyCommand.CMD + " here");
+			return true;
+		}
+		
+		// Otherwise, toggle fly.
+		if (flier.isFlying()) {
 			sender.sendMessage(ChatColor.YELLOW + "Time to drop like a rock!");
-			flier.setAllowFlight(false);
+			flier.setFlying(false);
 		} else {
 			sender.sendMessage(ChatColor.YELLOW + "Fly away, little birdie!");
-			flier.setAllowFlight(true);
+			flier.setFlying(true);
 		}
-		
+		 
 		// Return this command as processed
 		return true;
 	}

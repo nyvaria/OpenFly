@@ -21,24 +21,35 @@ public class Flier {
 		this.plugin = plugin;
 		this.player = player;
 		
-		if (LocationUtil.isInMidAir(player.getLocation())) {
-			this.setAllowFlight(true);
+		if (this.hasFlyPermission()) {
+			if (LocationUtil.isInMidAir(player.getLocation())) {
+				this.setFlying(true);
+			}
+		} else {
+			if (this.isFlying()) {
+				this.setFlying(false);
+			}
 		}
+			
 	}
 	
-	public boolean getAllowFlight() {
+	public boolean isFlying() {
 		return this.player.getAllowFlight();
 	}
 	
-	public void setAllowFlight(boolean allowFlight) {
-		this.player.setAllowFlight(allowFlight);
+	public void setFlying(boolean flyEnabled) {
+		this.player.setAllowFlight(flyEnabled);
 	}
 	
-	public void toggleAllowFlight() {
-		if (this.getAllowFlight()) {
-			this.setAllowFlight(false);
+	public void toggleFlyEnabled() {
+		if (this.isFlying()) {
+			this.setFlying(false);
 		} else {
-			this.setAllowFlight(true);
+			this.setFlying(true);
 		}
+	}
+	
+	public boolean hasFlyPermission() {
+		return this.player.hasPermission(OpenFly.PERM_FLY);
 	}
 }

@@ -16,6 +16,8 @@ import org.bukkit.plugin.java.JavaPlugin;
  *
  */
 public class OpenFly extends JavaPlugin {
+	public static String PERM_FLY = "openfly.fly";
+
 	public   FlierList       flierList  = null;
 	private  OpenFlyListener listener   = null;
 	private  FlyCommand      flyCommand = null;
@@ -38,7 +40,7 @@ public class OpenFly extends JavaPlugin {
 
 		// Create and set the command
 		this.flyCommand = new FlyCommand(this);
-		this.getCommand("fly").setExecutor(this.flyCommand);
+		this.getCommand(FlyCommand.CMD).setExecutor(this.flyCommand);
 		
 		this.log("Enabling " + this.getNameVersion() + " successful");
 	}
