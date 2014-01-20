@@ -2,6 +2,7 @@ OpenFly Changelog
 =================
 
 OpenFly v1.0.02 - ?? ??????? 2014
+---------------------------------
  - Added README.md, CHANGELOG.md and LICENSE to jar
 
 OpenFly v1.0.01 - 20 January 2014
