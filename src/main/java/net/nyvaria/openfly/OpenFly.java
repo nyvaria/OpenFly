@@ -1,4 +1,21 @@
 /**
+ * Copyright (c) 2013-2014 -- Paul Thompson / Nyvaria
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/**
  * 
  */
 package net.nyvaria.openfly;
@@ -40,10 +57,6 @@ public class OpenFly extends JavaPlugin {
 			this.flierList.put(player);
 		}
 
-		// Create and set the command
-		this.flyCommand = new FlyCommand(this);
-		this.getCommand(FlyCommand.CMD).setExecutor(this.flyCommand);
-		
 		// Initialise or update the configuration
 		this.saveDefaultConfig();
 		this.getConfig().options().copyDefaults(true);
@@ -52,10 +65,16 @@ public class OpenFly extends JavaPlugin {
 		boolean useMetrics = this.getConfig().getBoolean("use-metrics");
 		if (useMetrics) {
             this.metrics = new MetricsHandler(this);
+            metrics.run();
 		} else {
             this.log("Skipping metrics");
 		}
 		
+		// Create and set the commands
+		this.flyCommand = new FlyCommand(this);
+		this.getCommand(FlyCommand.CMD).setExecutor(this.flyCommand);
+		
+		// Print a lovely message
 		this.log("Enabling " + this.getNameVersion() + " successful");
 	}
 	
@@ -71,22 +90,6 @@ public class OpenFly extends JavaPlugin {
 		this.log("Disabling " + this.getNameVersion() + " successful");
 	}
 	
-	// Is this used by anything?
-	public void reload() {
-		this.log("Reloading " + this.getNameVersion());
-		this.onDisable();
-		this.onEnable();
-		this.log("Reloading " + this.getNameVersion() + " successful");
-	}
-	
-	private String getNameVersion() {
-		return this.getName() + " " + this.getVersion();
-	}
-	
-	private String getVersion() {
-		return "v" + this.getDescription().getVersion();
-	}
-	
 	public void log(String msg) {
 		this.log(Level.INFO, msg);
 	}
@@ -94,4 +97,8 @@ public class OpenFly extends JavaPlugin {
 	public void log(Level level, String msg) {
 		this.getLogger().log(level, msg);
 	}
+	private String getNameVersion() {
+		return this.getName() + " v" + this.getDescription().getVersion();
+	}
+	
 }
