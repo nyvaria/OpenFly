@@ -7,6 +7,7 @@ import java.util.logging.Level;
 
 import net.nyvaria.openfly.commands.FlyCommand;
 import net.nyvaria.openfly.flier.FlierList;
+import net.nyvaria.openfly.metrics.MetricsHandler;
 
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -20,6 +21,7 @@ public class OpenFly extends JavaPlugin {
 
 	public   FlierList       flierList  = null;
 	private  OpenFlyListener listener   = null;
+	private  MetricsHandler  metrics    = null;
 	private  FlyCommand      flyCommand = null;
 	
 	@Override
@@ -42,6 +44,18 @@ public class OpenFly extends JavaPlugin {
 		this.flyCommand = new FlyCommand(this);
 		this.getCommand(FlyCommand.CMD).setExecutor(this.flyCommand);
 		
+		// Initialise or update the configuration
+		this.saveDefaultConfig();
+		this.getConfig().options().copyDefaults(true);
+		
+		// Initialise metrics
+		boolean useMetrics = this.getConfig().getBoolean("use-metrics");
+		if (useMetrics) {
+            this.metrics = new MetricsHandler(this);
+		} else {
+            this.log("Skipping metrics");
+		}
+		
 		this.log("Enabling " + this.getNameVersion() + " successful");
 	}
 	
@@ -51,16 +65,20 @@ public class OpenFly extends JavaPlugin {
 		this.flierList.clear();
 		this.flierList = null;
 		
+		// Destroy the metrics handler
+		this.metrics = null;
+		
 		this.log("Disabling " + this.getNameVersion() + " successful");
 	}
 	
+	// Is this used by anything?
 	public void reload() {
 		this.log("Reloading " + this.getNameVersion());
 		this.onDisable();
 		this.onEnable();
 		this.log("Reloading " + this.getNameVersion() + " successful");
 	}
-
+	
 	private String getNameVersion() {
 		return this.getName() + " " + this.getVersion();
 	}

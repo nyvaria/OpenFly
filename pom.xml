@@ -2,11 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
 	<modelVersion>4.0.0</modelVersion>
+	
 	<groupId>net.nyvaria</groupId>
 	<artifactId>OpenFly</artifactId>
-	<version>0.2.1</version>
+	<version>0.2.2</version>
+	
 	<name>OpenFly</name>
 	<url>https://github.com/nyvaria/OpenFly</url>
 	<description>A fly plugin for Bukkit.</description>
@@ -51,8 +52,8 @@
 			<url>http://repo.bukkit.org/content/groups/public</url>
 		</repository>
 		<repository>
-			<id>vault-repo</id>
-			<url>http://ci.herocraftonline.com/plugin/repository/everything</url>
+			<id>Plugin Metrics</id>
+			<url>http://repo.mcstats.org/content/repositories/public</url>
 		</repository>
 	</repositories>
 	
@@ -60,11 +61,17 @@
 		<dependency>
 			<groupId>org.bukkit</groupId>
 			<artifactId>bukkit</artifactId>
-			<version>1.6.4-R2.0</version>
+			<version>1.7.2-R0.3-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.mcstats.bukkit</groupId>
+			<artifactId>metrics</artifactId>
+			<version>R7</version>
+			<scope>compile</scope>
+		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<finalName>${project.artifactId}-${project.version}</finalName>
 		<defaultGoal>install</defaultGoal>
@@ -81,7 +88,6 @@
 					<include>plugin.yml</include>
 				</includes>
 			</resource>
-			
 			<resource>
 				<targetPath>.</targetPath>
 				<filtering>false</filtering>

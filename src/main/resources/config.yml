@@ -1,1 +1,6 @@
-# Nothing here yet
+#
+# OpenFly Configuration
+#
+
+use-metrics: true
+

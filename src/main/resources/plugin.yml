@@ -1,21 +1,18 @@
 name: ${pom.name}
+description: ${pom.description}
 version: ${pom.version}
 website: ${pom.url}
 author: captbunzo
 
 main: net.nyvaria.openfly.OpenFly
-softdepend: [Vault]
 
 commands:
   fly:
-    description: Access to the fly commands
-    usage: /<fly> help [page] - Displays the OpenFly commands
+    description: Toggle flight on and off
+    permission: openfly.fly
+    permission-message: You do not have permission to /fly
+    usage: /<fly> - Toggle flight on and off
 
 permissions:
-  openfly.all:
-    description: Gives access to all OpenFly commands
-    children:
-      openfly.fly: true
-  
   openfly.fly:
     description: Gives access to the fly command
