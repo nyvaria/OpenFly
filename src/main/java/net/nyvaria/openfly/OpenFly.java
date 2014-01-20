@@ -44,8 +44,6 @@ public class OpenFly extends JavaPlugin {
 	
 	@Override
 	public void onEnable() {
-		this.getLogger().setLevel(Level.INFO);
-		
 		// Create an empty flier list
 		this.flierList = new FlierList(this);
 		
