@@ -1,6 +1,9 @@
 OpenFly Changelog
 =================
 
+OpenFly v1.0.02 - ?? ??????? 2014
+ - Added README.md, CHANGELOG.md and LICENSE to jar
+
 OpenFly v1.0.01 - 20 January 2014
  - General code cleanup
  - Added metrics (http://mcstats.org/plugin/OpenFly)
@@ -17,4 +20,3 @@ OpenFly v0.1.01 - 16 December 2013 (not released)
 
 OpenFly v0.1.00 - 08 December 2013
  - Initial beta version including basic /fly command without permission support
-

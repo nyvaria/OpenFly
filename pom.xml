@@ -93,6 +93,9 @@
 				<filtering>false</filtering>
 				<directory>${basedir}/src/main/resources/</directory>
 				<includes>
+					<include>README.md</include>
+					<include>CHANGELOG.md</include>
+					<include>LICENSE</include>
 					<include>config.yml</include>
 				</includes>
 			</resource>
