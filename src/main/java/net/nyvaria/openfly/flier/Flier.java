@@ -31,12 +31,9 @@ import net.nyvaria.openfly.LocationUtil;
  *
  */
 public class Flier {
-	@SuppressWarnings("unused")
-	private final OpenFly plugin;
 	private final Player  player;
 	
-	public Flier(OpenFly plugin, Player player) {
-		this.plugin = plugin;
+	public Flier(Player player) {
 		this.player = player;
 		
 		if (this.hasFlyPermission()) {

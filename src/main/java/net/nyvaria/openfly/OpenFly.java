@@ -35,33 +35,32 @@ public class OpenFly extends NyvariaPlugin {
 
     // Listener and Commands and Lists (oh my)
     private OpenFlyListener listener = null;
-    private FlyCommand flyCommand = null;
     private FlierList flierList = null;
 
     @Override
     public void onEnable() {
         // Initialise or update the configuration
-        this.saveDefaultConfig();
-        this.getConfig().options().copyDefaults(true);
+        saveDefaultConfig();
+        getConfig().options().copyDefaults(true);
 
         // Initialise optional hooks
         MetricsHook.enable(this);
 
         // Create an empty flier list and add all currently logged in players
-        this.flierList = new FlierList(this);
-        for (Player player : this.getServer().getOnlinePlayers()) {
-            this.flierList.put(player);
+        flierList = new FlierList();
+        for (Player player : getServer().getOnlinePlayers()) {
+            flierList.put(player);
         }
 
         // Create and register the listener
-        this.listener = new OpenFlyListener(this);
+        listener = new OpenFlyListener(this);
 
         // Create and set the commands
-        this.flyCommand = new FlyCommand(this);
-        this.getCommand(FlyCommand.CMD).setExecutor(this.flyCommand);
+        FlyCommand flyCommand = new FlyCommand(this);
+        getCommand(FlyCommand.CMD).setExecutor(flyCommand);
 
         // Print a lovely message
-        this.log("Enabling %1$s successful", this.getNameAndVersion());
+        log("Enabling %1$s successful", getNameAndVersion());
     }
 
     @Override
@@ -69,11 +68,12 @@ public class OpenFly extends NyvariaPlugin {
         // Disable the hooks
         MetricsHook.disable();
 
-        // Destroy the flier list
-        this.flierList = null;
+        // Destroy the listener and flier list
+        listener  = null;
+        flierList = null;
 
         // Print a lovely message
-        this.log("Disabling %s successful", this.getNameAndVersion());
+        log("Disabling %s successful", getNameAndVersion());
     }
 
     /**

@@ -23,8 +23,6 @@ package net.nyvaria.openfly.flier;
 
 import java.util.HashMap;
 
-import net.nyvaria.openfly.OpenFly;
-
 import org.bukkit.entity.Player;
 
 /**
@@ -32,17 +30,15 @@ import org.bukkit.entity.Player;
  *
  */
 public class FlierList {
-	private final OpenFly plugin;
 	private HashMap<Player, Flier> list;
 	
-	public FlierList(OpenFly plugin) {
-		this.plugin = plugin;
+	public FlierList() {
 		this.list = new HashMap<Player, Flier>();
 	}
 	
 	public void put(Player player) {
 		if (!this.list.containsKey(player)) {
-			Flier flier = new Flier(this.plugin, player);
+			Flier flier = new Flier(player);
 			this.list.put(player, flier);
 		}
 	}

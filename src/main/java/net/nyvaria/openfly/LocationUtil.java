@@ -88,11 +88,7 @@ public class LocationUtil {
             --y;
         }
 
-        if (((location.getBlockY() - y) > 1) || (y < 0)) {
-            return true;
-        }
-
-        return false;
+        return ((location.getBlockY() - y) > 1) || (y < 0);
     }
 
 }
